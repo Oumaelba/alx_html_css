@@ -1,0 +1,29 @@
+body {
+	display: flex;
+	flex-direction: column;
+	background-color: #ddaf72;
+	
+
+}
+main{
+	display: flex;
+	flex-direction: row;
+	flex: auto;
+	background-color: #eed9bd;
+}
+article {
+	flex: 2;
+	overflow-y: auto;
+}
+aside {
+	flex: 1;
+	overflow-y: auto;
+	background-color: #ddaf72;
+}
+header a {
+    color: hsl(240, 67%, 4%);
+}
+
+header a:hover {
+    color: hsl(201, 51%, 39%); 
+}
