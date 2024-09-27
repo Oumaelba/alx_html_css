@@ -11,7 +11,13 @@ version when the screen width is 480px or less
 	--white: #FFFFFF;
 	--pink: #FF6565;
 	--blue: #071629;
-	--font: 'source sans pro'
+	--font: 'source sans pro';
+	--bar-width: 18px;
+	--bar-width-med: 13px;
+	--bar-height: 2px;
+	--icon-gap: 4px;
+	--icon-margin:15px;
+	--animation-timing: 200ms ease-in-out;
 }
 *{
 	color: var(--white);
@@ -35,7 +41,6 @@ body, html{
 nav{
 	display: flex;
 	justify-content: space-around;
-	
 }
 nav ul{
 	display: flex;
@@ -53,7 +58,6 @@ nav li{
 }
 nav a{
 	text-decoration: none;
-	color: var(--white);
 }
 nav a:hover{
 	color: var(--pink);
@@ -61,18 +65,29 @@ nav a:hover{
 nav a:active{
 	color: var(--pink);
 }
+.menu-icon::before,
+.menu-icon::after,
+.menu-icon input{
+	content: "";
+	width: var(--bar-width);
+	height: var(--bar-height);
+	background-color: var(--white);
+	transform-origin: left center;
+}
+.menu-icon input{
+	width: var(--bar-width-med);
+	appearance: none;
+	padding: 0;
+	margin: 0;
+	outline: none;
+	pointer-events: none;
+	transition: opacity var(--animation-timing), width var(--animation-timing), 
+		rotate var(--animation-timing), translate var(--animation-timing);
+
+}
 .menu-icon {
     display: none;
-    font-size: 30px;
-    color: var(--white);
-    cursor: pointer;  /* go back*/
-	position: absolute; 
-    top: 0px;
-    left: 10px; 
 }
-.toggle {
-    display: none;
-} 
 .logo{
 	width: 161px;
 	flex-shrink: 0;
@@ -153,14 +168,14 @@ button:active{
 	justify-content: space-evenly;
 	padding: 80px; /*same here*/
 	align-items: baseline;
+	flex-wrap: wrap;
 }
 .icons div {
     display: flex;
     flex-direction: column;
     align-items: center;
-	width: 207px;
+	max-width: 207px;
 	text-align: center;
-	
 }
 
 .icons h3{
@@ -188,14 +203,31 @@ button:active{
         text-align: center;
         padding: 10px 0;
     }
-	.menu-icon {
-        display: block;
-    } 
-    #toggle:checked + .menu-icon + .nav-links {
-        display: flex;
-	} 
-	.icons{
+	.menu-icon{
 		display: flex;
 		flex-direction: column;
+		gap: var(--icon-gap);
+		width: max-content;
+		position: absolute;
+		top: var(--icon-margin);
+		left: var(--icon-margin);
+		z-index: 2;
+		cursor: pointer;
+	}
+	.menu-icon input:checked{
+		opacity: 0;
+		width: 0;
+	}
+	.menu-icon:has(input:checked) + .nav-links{
+		display: flex;
+	}
+	.menu-icon:has(input:checked)::before{
+		rotate: 45deg;
+	}
+	.menu-icon:has(input:checked)::after{
+		rotate: -45deg;
+	}
+	.logo{
+		margin-top: 5px;
 	}
 }

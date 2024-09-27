@@ -11,7 +11,13 @@ version when the screen width is 480px or less
 	--white: #FFFFFF;
 	--pink: #FF6565;
 	--blue: #071629;
-	--font: 'source sans pro'
+	--font: 'source sans pro';
+	--bar-width: 18px;
+	--bar-width-med: 13px;
+	--bar-height: 2px;
+	--icon-gap: 4px;
+	--icon-margin:15px;
+	--animation-timing: 200ms ease-in-out;
 }
 *{
 	color: var(--white);
@@ -42,7 +48,6 @@ nav ul{
 	justify-content: flex-end;
 	gap: 20px;
 	align-items: center;
-	color: var(--white);
 }
 nav li{
 	font-size: 12px;
@@ -58,40 +63,30 @@ nav a:hover{
 nav a:active{
 	color: var(--pink);
 }
+.menu-icon::before,
+.menu-icon::after,
+.menu-icon input{
+	content: "";
+	width: var(--bar-width);
+	height: var(--bar-height);
+	background-color: var(--white);
+	transform-origin: left center;
+}
+.menu-icon input{
+	width: var(--bar-width-med);
+	appearance: none;
+	padding: 0;
+	margin: 0;
+	outline: none;
+	pointer-events: none;
+	transition: opacity var(--animation-timing), width var(--animation-timing), 
+		rotate var(--animation-timing), translate var(--animation-timing);
+
+}
 .menu-icon {
     display: none;
-    font-size: 30px;
-    color: var(--white);
-    cursor: pointer;  /* go back*/
-	position: absolute; 
-    top: 0px;
-    left: 10px; 
 }
-.toggle {
-    display: none;
-} 
 
-@media (max-width: 480px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background-color: transparent;
-        width: 100%;
-    }
-	.nav-links li {
-        text-align: center;
-        padding: 10px 0;
-    }
-	.menu-icon {
-        display: block;
-    } 
-    #toggle:checked + .menu-icon + .nav-links {
-        display: flex;
-	} 
-}
 .logo{
 	width: 161px;
 	flex-shrink: 0;
@@ -141,4 +136,46 @@ button:active{
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
+}
+@media (max-width: 480px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: transparent;
+        width: 100%;
+    }
+	.nav-links li {
+        text-align: center;
+        padding: 10px 0;
+    }
+	.menu-icon{
+		display: flex;
+		flex-direction: column;
+		gap: var(--icon-gap);
+		width: max-content;
+		position: absolute;
+		top: var(--icon-margin);
+		left: var(--icon-margin);
+		z-index: 2;
+		cursor: pointer;
+	}
+	.menu-icon input:checked{
+		opacity: 0;
+		width: 0;
+	}
+	.menu-icon:has(input:checked) + .nav-links{
+		display: flex;
+	}
+	.menu-icon:has(input:checked)::before{
+		rotate: 45deg;
+	}
+	.menu-icon:has(input:checked)::after{
+		rotate: -45deg;
+	}
+	.logo{
+		margin-top: 5px;
+	}
 }

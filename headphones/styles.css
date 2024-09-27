@@ -61,6 +61,40 @@ nav a:hover{
 nav a:active{
 	color: var(--pink);
 }
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    color: var(--white);
+    cursor: pointer;  /* go back*/
+	position: absolute; 
+    top: 0px;
+    left: 10px; 
+}
+.toggle {
+    display: none;
+} 
+
+@media (max-width: 480px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: transparent;
+        width: 100%;
+    }
+	.nav-links li {
+        text-align: center;
+        padding: 10px 0;
+    }
+	.menu-icon {
+        display: block;
+    } 
+    #toggle:checked + .menu-icon + .nav-links {
+        display: flex;
+	} 
+}
 .logo{
 	width: 161px;
 	flex-shrink: 0;
@@ -161,7 +195,4 @@ button:active{
 	font-size: 14px;
 	font-weight: 400;
 	
-}
-@media (max-width: 480px){
-
 }
