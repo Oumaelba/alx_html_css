@@ -201,7 +201,6 @@ button:active{
 	font-size: 18px;
 	font-weight: 600;
 	color: var(--blue);
-	/* margin-top: 110px; */
 }
 .icons p{
 	color: var(--blue);
