@@ -245,6 +245,79 @@ button:active{
 	padding-bottom: 50px;
 }
 /* End of the third part */
+/* Start of the fourth part */
+.contact h2{
+	text-align: center;
+	color: var(--blue);
+	font-size: 32px;
+	font-weight: 700;
+	margin-top: 100px;
+	padding-bottom: 70px;
+}
+form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+label{
+	color: var(--blue);
+	align-self: center;
+	margin-top: 10px;
+	font-weight: 600;
+	width: 335px;
+	text-align: left;
+}
+form input{
+
+	border: none;
+	border-bottom: 1px solid var(--blue);
+	padding: 5px 20px 5px 1px;
+	margin-bottom: 5px;
+	width: 335px;
+	color: var(--blue);
+	font-size: 16px;
+}
+input:focus{
+	outline: none;
+	background-color: rgb(227, 226, 212);
+}
+form button{
+	border: 0;
+	width: 162px;
+	height: 44px;
+	border-radius: 22px;
+	background-color: var(--pink);
+	align-items: center;
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: 45px;
+	padding: 2px;
+	cursor: pointer;
+}
+button:hover{
+	opacity: 0.9;
+}
+button:active{
+	opacity: 0.9;
+}
+/* End of the fourth part */
+/* Start of footer */
+footer {
+	background-color: var(--blue);
+}
+footer .container{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 25vh;
+}
+footer .container span{
+	align-self: last baseline;
+	font-size: 12px;
+	font-weight: 400;
+	padding-bottom: 20px;
+}
+/* End of footer */
 /* For phones */
 @media (max-width: 480px) {
     .nav-links {
@@ -296,5 +369,34 @@ button:active{
 	.intro h3{
 		font-size: 10px;
 		padding-top: 5px;
+	}
+	label{
+		color: var(--blue);
+		align-self: center;
+		margin-top: 5px;
+		font-weight: 600;
+		width: 200px;
+		text-align: left;
+	}
+	form input{
+	
+		border: none;
+		border-bottom: 1px solid var(--blue);
+		padding: 2px 10px 2px 1px;
+		margin-bottom: 2px;
+		width: 200px;
+		color: var(--blue);
+		font-size: 10px;
+	}
+	footer .container span{
+		align-self: last baseline;
+		text-align: center;
+		font-size: 10px;
+		font-weight: 400;
+		padding-bottom: 20px;
+	}
+	footer img{
+		width: 80px;
+		height: 20px;
 	}
 }
